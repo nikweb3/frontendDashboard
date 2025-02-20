@@ -5,18 +5,14 @@
     </div>
   
     <div class="editor-layout">
-      <!-- Left: Blocks Section -->
       <div class="blocks-section">
         <div id="blocks" class="blocks-container"></div>
       </div>
   
-      <!-- Right: GrapesJS Canvas -->
       <div id="gjs" class="editor-container">
         <h1 class="editor-title">Hello World Component!</h1>
       </div>
 
-
-    <!-- Right: Layers Section -->
     <div class="layers-section">
       <div id="layers" class="layers-container"></div>
     </div>
@@ -65,20 +61,18 @@
         devices: [
         {
             name: 'Desktop',
-            width: '', // default size
+            width: '', 
         },
         {
             name: 'Mobile',
-            width: '320px', // this value will be used on canvas width
-            widthMedia: '480px', // this value will be used in CSS @media
+            width: '320px', 
+            widthMedia: '480px', 
         },
      ]},
      layerManager: {
-      appendTo: '#layers', // Attach layers to the right-side container
+      appendTo: '#layers', 
     },
     });
-
-
 
     editor.Commands.add('set-device-desktop', {
         run: (editor) => editor.setDevice('Desktop'),
@@ -87,7 +81,6 @@
         run: (editor) => editor.setDevice('Mobile'),
     });
   
-    // Adding a custom block
     editor.BlockManager.add('custom-block', {
       label: 'Custom Block',
       category: 'Custom',
@@ -130,14 +123,14 @@
     buttons: [
         {
             id: 'device-desktop',
-            label: '<i class="fas fa-desktop"></i>', // Desktop Icon
+            label: '<i class="fas fa-desktop"></i>', 
             command: 'set-device-desktop',
             active: true,
             togglable: false,
         },
         {
             id: 'device-mobile',
-            label: '<i class="fas fa-mobile-alt"></i>', // Mobile Icon
+            label: '<i class="fas fa-mobile-alt"></i>', 
             command: 'set-device-mobile',
             togglable: false,
         },
@@ -200,7 +193,7 @@
 }
 
   #layers {
-  width: 300px; /* Fixed width for layers panel */
+  width: 300px; 
   background-color: #2c2c2c;
   padding: 15px;
   overflow-y: auto;
@@ -209,7 +202,7 @@
   color: white;
   margin-top:8%;
 }
-  /* Editor Container */
+
   .editor-container {
     padding: 20px;
     background: #473869;
@@ -225,7 +218,6 @@
     margin-bottom: 16px;
   }
   
-  /* Blocks Section */
   .blocks-section {
     width: 100%;
   }
@@ -239,16 +231,14 @@
     padding-left: 20px;
   }
   
-  /* Main Layout */
 .editor-layout {
   display: flex;
   width: 100%;
-  height: 100vh; /* Full height */
+  height: 100vh;
 }
 
-/* Blocks Section (Left) */
 .blocks-section {
-  width: 300px; /* Fixed width for the blocks */
+  width: 300px; 
   background-color: #473869;
   padding: 20px;
   overflow-y: auto;
@@ -269,8 +259,6 @@
   background: #473869;
 }
 
-  
-  /* Block Styling */
   .gjs-block {
     width: 150px;
     height: auto;
@@ -293,7 +281,6 @@
     border-radius: 8px;
   }
   
-  /* Panels */
   .panel__top {
   padding: 0;
   width: 100%;
