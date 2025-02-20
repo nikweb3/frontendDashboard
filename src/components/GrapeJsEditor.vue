@@ -14,6 +14,12 @@
       <div id="gjs" class="editor-container">
         <h1 class="editor-title">Hello World Component!</h1>
       </div>
+
+
+    <!-- Right: Layers Section -->
+    <div class="layers-section">
+      <div id="layers" class="layers-container"></div>
+    </div>
     </div>
   </template>
   <script setup>
@@ -66,8 +72,13 @@
             width: '320px', // this value will be used on canvas width
             widthMedia: '480px', // this value will be used in CSS @media
         },
-     ]}
+     ]},
+     layerManager: {
+      appendTo: '#layers', // Attach layers to the right-side container
+    },
     });
+
+
 
     editor.Commands.add('set-device-desktop', {
         run: (editor) => editor.setDevice('Desktop'),
@@ -178,12 +189,24 @@
   
   
   <style scoped>
+
+.layers-section{
+    background: #473869;
+}
+
+  #layers {
+  width: 300px; /* Fixed width for layers panel */
+  background-color: #2c2c2c;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
   /* Editor Container */
   .editor-container {
-    border: 2px solid #e1e4e8;
     padding: 20px;
-    border-radius: 8px;
-    background: #fff;
+    background: #473869;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     margin-bottom: 20px;
@@ -199,7 +222,6 @@
   /* Blocks Section */
   .blocks-section {
     width: 100%;
-    margin-top: 20px;
   }
   
   .blocks-heading {
@@ -224,7 +246,6 @@
   background-color: #473869;
   padding: 20px;
   overflow-y: auto;
-  border-right: 2px solid #ddd;
 }
 
 .blocks-heading {
