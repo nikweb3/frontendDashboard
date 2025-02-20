@@ -38,6 +38,7 @@
       <DexScoreRadarChart v-if="dexScoreChartData" :chart-data="dexScoreChartData"
         :chart-options="dexScoreChartOptions" />
     </div>
+    {{ data }}
   </div>
 </template>
 
