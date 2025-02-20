@@ -64,6 +64,13 @@
       },
     ]}
     });
+
+    editor.Commands.add('set-device-desktop', {
+  run: (editor) => editor.setDevice('Desktop'),
+});
+editor.Commands.add('set-device-mobile', {
+  run: (editor) => editor.setDevice('Mobile'),
+});
   
     // Adding a custom block
     editor.BlockManager.add('custom-block', {
