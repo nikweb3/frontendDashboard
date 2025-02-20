@@ -19,7 +19,10 @@
   
   const props = defineProps({
     chartData: {
-      type: Object,
+      type: Object as () => {
+        labels: string[],
+        datasets: { data: number[] }[]
+      },
       required: true
     },
     chartOptions: {

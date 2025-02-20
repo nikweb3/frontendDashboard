@@ -17,7 +17,13 @@ ChartJS.register(ArcElement, Title, Tooltip, Legend)
 
 const props = defineProps({
   chartData: {
-    type: Object,
+    type: Object as () => {
+      labels: string[],
+      datasets: {
+        data: number[],
+        backgroundColor: string[]
+      }[]
+    },
     required: true
   },
   chartOptions: {

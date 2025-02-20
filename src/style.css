@@ -30,7 +30,7 @@
   }
 
   .chart-container {
-    height: 300px; /* Adjust the height as needed */
+    height: 300px; 
     width: 100%;
     display: flex;
   }
@@ -44,7 +44,7 @@
   }
 
   .chart-container-line {
-    height: 300px; /* Adjust the height as needed */
+    height: 300px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -52,9 +52,9 @@
   }
 
   .scaled-chart-container {
-    width: 80%; /* Adjust as needed */
-    max-width: 500px; /* Set a reasonable max width */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0 auto; /* Center if needed */
+    width: 80%; 
+    max-width: 500px; 
+    height: auto; 
+    margin: 0 auto; 
   }
   
