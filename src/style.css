@@ -1,5 +1,60 @@
 @import "tailwindcss";
 
+.overflow-auto {
+    overflow: auto;
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .bg-white {
+    background-color: #fff;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .mb-6 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .flex {
+    display: flex;
+    gap: 1rem;
+  }
 
+  .chart-container {
+    height: 300px; /* Adjust the height as needed */
+    width: 100%;
+    display: flex;
+  }
 
+  .chart-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-left: 7%;
+    margin-bottom: 5%;
+  }
 
+  .chart-container-line {
+    height: 300px; /* Adjust the height as needed */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+  }
+
+  .scaled-chart-container {
+    width: 80%; /* Adjust as needed */
+    max-width: 500px; /* Set a reasonable max width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center if needed */
+  }
+  
