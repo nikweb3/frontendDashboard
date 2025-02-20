@@ -1,16 +1,9 @@
 <template>
-    <div class="dashboard-container">
-      <h1 class="dashboard-title">Report Builder</h1>
-      <p class="dashboard-subtitle">Create report templates and configure maialing list</p>
-  
-      <div class="chart-wrapper">
-        <!-- <div ref="chart" class="chart-container"></div>
-        <div ref="tooltip" class="tooltip hidden"></div> -->
-      </div>
-    </div>
+    <GrapeJsEditor />
   </template>
   
-  <script setup lang="ts">
+  <script setup>
+  import GrapeJsEditor from '../components/GrapeJsEditor.vue';
   </script>
   
   <style scoped>
@@ -38,14 +31,14 @@
     margin-bottom: 20px;
   }
   
-  .chart-container {
+  .chart-wrapper {
     width: 100%;
-    height: 500px;
+    height: 600px; /* Adjusted to give the editor space */
     display: flex;
     justify-content: center;
     align-items: center;
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
   }
