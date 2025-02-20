@@ -10,7 +10,7 @@
       </div>
   
       <div id="gjs" class="editor-container">
-        <h1 class="editor-title">Hello World Component!</h1>
+        <h1 class="editor-title">My first Report!</h1>
       </div>
 
     <div class="layers-section">
