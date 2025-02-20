@@ -1,27 +1,31 @@
 <template>
     <div class="panel__top">
-    <div class="panel__basic-actions"></div>
-    <div class="panel__devices"></div>
-</div>
-    <div id="gjs" class="editor-container">
-      <h1 class="editor-title">Hello World Component!</h1>
+      <div class="panel__basic-actions"></div>
+      <div class="panel__devices"></div>
     </div>
-    <div class="blocks-section">
-      <h2 class="blocks-heading">Choose Component And Drag Onto Canvas</h2>
-      <div id="blocks" class="blocks-container"></div>
+  
+    <div class="editor-layout">
+      <!-- Left: Blocks Section -->
+      <div class="blocks-section">
+        <div id="blocks" class="blocks-container"></div>
+      </div>
+  
+      <!-- Right: GrapesJS Canvas -->
+      <div id="gjs" class="editor-container">
+        <h1 class="editor-title">Hello World Component!</h1>
+      </div>
     </div>
   </template>
-  
   <script setup>
   import { onMounted } from 'vue';
   import 'grapesjs/dist/css/grapes.min.css';
   import grapesjs from 'grapesjs';
-  
+
   onMounted(() => {
     const editor = grapesjs.init({
       container: '#gjs',
       fromElement: true,
-      height: '500px',
+      height: '100vh',
       width: '100%',
       storageManager: false,
       panels: { defaults: [] },
@@ -52,30 +56,30 @@
         ],
       },
       deviceManager: {
-    devices: [
-      {
-        name: 'Desktop',
-        width: '', // default size
-      },
-      {
-        name: 'Mobile',
-        width: '320px', // this value will be used on canvas width
-        widthMedia: '480px', // this value will be used in CSS @media
-      },
-    ]}
+        devices: [
+        {
+            name: 'Desktop',
+            width: '', // default size
+        },
+        {
+            name: 'Mobile',
+            width: '320px', // this value will be used on canvas width
+            widthMedia: '480px', // this value will be used in CSS @media
+        },
+     ]}
     });
 
     editor.Commands.add('set-device-desktop', {
-  run: (editor) => editor.setDevice('Desktop'),
-});
-editor.Commands.add('set-device-mobile', {
-  run: (editor) => editor.setDevice('Mobile'),
-});
+        run: (editor) => editor.setDevice('Desktop'),
+    });
+    editor.Commands.add('set-device-mobile', {
+        run: (editor) => editor.setDevice('Mobile'),
+    });
   
     // Adding a custom block
     editor.BlockManager.add('custom-block', {
       label: 'Custom Block',
-      category: 'Custom Components',
+      category: 'Custom',
       content: {
         tagName: 'div',
         draggable: true,
@@ -92,6 +96,23 @@ editor.Commands.add('set-device-mobile', {
         ],
       },
     });
+
+    
+  editor.BlockManager.add('button', {
+    label: 'Button',
+    category: 'Basic',
+    content: '<button class="btn">Click Me</button>',
+  });
+
+  editor.BlockManager.add('column', {
+    label: 'Column Layout',
+    category: 'Layout',
+    content: `<div class="row">
+                <div class="col">Column 1</div>
+                <div class="col">Column 2</div>
+              </div>`,
+  });
+
     editor.Panels.addPanel({
         id: 'panel-devices',
         el: '.panel__devices',
@@ -189,18 +210,37 @@ editor.Commands.add('set-device-mobile', {
     padding-left: 20px;
   }
   
-  /* Blocks Container */
-  .blocks-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 10px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    width: 100%;
-    background-color: #473869;
-  }
+  /* Main Layout */
+.editor-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Full height */
+}
+
+/* Blocks Section (Left) */
+.blocks-section {
+  width: 300px; /* Fixed width for the blocks */
+  background-color: #473869;
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 2px solid #ddd;
+}
+
+.blocks-heading {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.blocks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #473869;
+}
+
   
   /* Block Styling */
   .gjs-block {
