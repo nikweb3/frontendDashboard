@@ -194,6 +194,11 @@
     background: #473869;
 }
 
+.gjs-cv-canvas{
+    width: 100% !important;
+    height: 100% !important;
+}
+
   #layers {
   width: 300px; /* Fixed width for layers panel */
   background-color: #2c2c2c;
@@ -202,6 +207,7 @@
   display: flex;
   flex-direction: column;
   color: white;
+  margin-top:8%;
 }
   /* Editor Container */
   .editor-container {
