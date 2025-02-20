@@ -21,6 +21,9 @@
       <router-link to="/compliance" class="p-3 rounded hover:bg-custom-700 flex items-center gap-2" active-class="bg-custom-700">
         <i class="fas fa-shield-alt text-white"></i> Compliance
       </router-link>
+      <router-link to="/reportbuilder" class="p-3 rounded hover:bg-custom-700 flex items-center gap-2" active-class="bg-custom-700">
+        <i class="fas fa-pencil-alt  text-white"></i> Report Builder
+      </router-link>
     </nav>
   </aside>
 </template>

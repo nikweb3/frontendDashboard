@@ -1,0 +1,66 @@
+<template>
+    <div class="dashboard-container">
+      <h1 class="dashboard-title">Report Builder</h1>
+      <p class="dashboard-subtitle">Create report templates and configure maialing list</p>
+  
+      <div class="chart-wrapper">
+        <!-- <div ref="chart" class="chart-container"></div>
+        <div ref="tooltip" class="tooltip hidden"></div> -->
+      </div>
+    </div>
+  </template>
+  
+  <script setup lang="ts">
+  </script>
+  
+  <style scoped>
+  .dashboard-container {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .dashboard-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4a047e;
+    text-align: left;
+  }
+  
+  .dashboard-subtitle {
+    color: #555;
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  </style>
+  
