@@ -113,25 +113,26 @@
               </div>`,
   });
 
-    editor.Panels.addPanel({
-        id: 'panel-devices',
-        el: '.panel__devices',
-        buttons: [
-          {
+  editor.Panels.addPanel({
+    id: 'panel-devices',
+    el: '.panel__devices',
+    buttons: [
+        {
             id: 'device-desktop',
-            label: 'D',
+            label: '<i class="fas fa-desktop"></i>', // Desktop Icon
             command: 'set-device-desktop',
             active: true,
             togglable: false,
-          },
-          {
+        },
+        {
             id: 'device-mobile',
-            label: 'M',
+            label: '<i class="fas fa-mobile-alt"></i>', // Mobile Icon
             command: 'set-device-mobile',
             togglable: false,
-          },
-        ],
-    });
+        },
+    ],
+});
+
   
     editor.Panels.addPanel({
       id: 'panel-top',
