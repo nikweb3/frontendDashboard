@@ -2,6 +2,7 @@
     <div class="panel__top">
       <div class="panel__basic-actions"></div>
       <div class="panel__devices"></div>
+      <div class="panel__switcher"></div>
     </div>
   
     <div class="editor-layout">
@@ -15,6 +16,8 @@
 
     <div class="layers-section">
       <div id="layers" class="layers-container"></div>
+      <div class="styles-container"></div>
+      <div class="traits-container"></div>
     </div>
     </div>
   </template>
@@ -70,9 +73,89 @@
         },
      ]},
      layerManager: {
-      appendTo: '#layers', 
+      appendTo: '.styles-container', 
     },
+    selectorManager: {
+    appendTo: '.styles-container',
+    },
+    styleManager: 
+    {
+        appendTo: '.styles-container',
+        sectors: [
+        {
+            name: 'Dimension',
+            open: false,
+            buildProps: ['width', 'min-height', 'padding'],
+            properties: 
+            [
+                {
+                    type: 'integer',
+                    name: 'The width',
+                    property: 'width', 
+                    units: ['px', '%'], 
+                    defaults: 'auto', 
+                    min: 0,
+                },
+            ],
+       },
+       {
+            name: 'Extra',
+            open: false,
+            buildProps: ['background-color', 'box-shadow', 'custom-prop'],
+            properties: 
+            [
+                {
+                    id: 'custom-prop',
+                    name: 'Custom Label',
+                    property: 'font-size',
+                    type: 'select',
+                    defaults: '32px',
+                    options: [
+                        { value: '12px', name: 'Tiny' },
+                        { value: '18px', name: 'Medium' },
+                        { value: '32px', name: 'Big' },
+                    ],
+                },
+            ],
+       },
+    ]
+    }
     });
+
+    editor.Commands.add('show-layers', {
+        getRowEl(editor) {
+            return editor.getContainer().closest('.editor-row');
+        },
+        getLayersEl(row) {
+            return row.querySelector('.styles-container');
+        },
+        run(editor, sender) {
+            const lmEl = this.getLayersEl(this.getRowEl(editor));
+            lmEl.style.display = '';
+        },
+        stop(editor, sender) {
+            const lmEl = this.getLayersEl(this.getRowEl(editor));
+            lmEl.style.display = 'none';
+        },
+    });
+
+    editor.Commands.add('show-styles', {
+        getRowEl(editor) {
+            return editor.getContainer().closest('.editor-row');
+        },
+        getStyleEl(row) {
+            return row.querySelector('.styles-container');
+        },
+        run(editor, sender) {
+            const smEl = this.getStyleEl(this.getRowEl(editor));
+            smEl.style.display = '';
+        },
+        stop(editor, sender) {
+            const smEl = this.getStyleEl(this.getRowEl(editor));
+            smEl.style.display = 'none';
+        },
+    });
+
 
     editor.Commands.add('set-device-desktop', {
         run: (editor) => editor.setDevice('Desktop'),
@@ -102,40 +185,61 @@
     });
 
     
-  editor.BlockManager.add('button', {
-    label: 'Button',
-    category: 'Basic',
-    content: '<button class="btn">Click Me</button>',
-  });
+    editor.BlockManager.add('button', {
+        label: 'Button',
+        category: 'Basic',
+        content: '<button class="btn">Click Me</button>',
+    });
 
-  editor.BlockManager.add('column', {
-    label: 'Column Layout',
-    category: 'Layout',
-    content: `<div class="row">
-                <div class="col">Column 1</div>
-                <div class="col">Column 2</div>
-              </div>`,
-  });
+    editor.BlockManager.add('column', {
+        label: 'Column Layout',
+        category: 'Layout',
+        content: `<div class="row">
+                    <div class="col">Column 1</div>
+                    <div class="col">Column 2</div>
+                </div>`,
+    });
 
-  editor.Panels.addPanel({
-    id: 'panel-devices',
-    el: '.panel__devices',
-    buttons: [
-        {
-            id: 'device-desktop',
-            label: '<i class="fas fa-desktop"></i>', 
-            command: 'set-device-desktop',
-            active: true,
-            togglable: false,
-        },
-        {
-            id: 'device-mobile',
-            label: '<i class="fas fa-mobile-alt"></i>', 
-            command: 'set-device-mobile',
-            togglable: false,
-        },
-    ],
-});
+    editor.Panels.addPanel({
+        id: 'panel-devices',
+            el: '.panel__devices',
+            buttons: [
+            {
+                id: 'device-desktop',
+                label: '<i class="fas fa-desktop"></i>', 
+                command: 'set-device-desktop',
+                active: true,
+                togglable: false,
+            },
+            {
+                id: 'device-mobile',
+                label: '<i class="fas fa-mobile-alt"></i>', 
+                command: 'set-device-mobile',
+                togglable: false,
+            },
+        ],
+    });
+
+    editor.Panels.addPanel({
+        id: 'panel-switcher',
+            el: '.panel__switcher',
+            buttons: [
+            {
+                id: 'show-layers',
+                active: true,
+                label: 'Layers',
+                command: 'show-layers',
+                togglable: false,
+            },
+            {
+                id: 'show-style',
+                active: true,
+                label: 'Styles',
+                command: 'show-styles',
+                togglable: false,
+            },
+            ],
+     });
 
   
     editor.Panels.addPanel({
@@ -182,6 +286,10 @@
   
   
   <style scoped>
+
+.panel__switcher {
+  position: initial;
+}
 
 .layers-section{
     background: #473869;
