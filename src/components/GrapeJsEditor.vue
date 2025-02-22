@@ -110,9 +110,191 @@
                 },
             ],
        },
-    ]
-    }
-    });
+       {
+            name: 'Typography',
+            open: false,
+            buildProps: ['font-family', 'font-size', 'font-weight', 'color', 'letter-spacing', 'line-height', 'text-align'],
+            properties: [
+            {
+                    name: 'Font Family',
+                    property: 'font-family',
+                    type: 'select',
+                    defaults: 'Arial',
+            options: [
+                    { value: 'Arial', name: 'Arial' },
+                    { value: 'Verdana', name: 'Verdana' },
+                    { value: 'Times New Roman', name: 'Times New Roman' },
+                    { value: 'Courier New', name: 'Courier New' },
+                ],
+            },
+            {
+                    name: 'Text Align',
+                    property: 'text-align',
+                    type: 'radio',
+                    defaults: 'left',
+            options: [
+                    { value: 'left', name: 'Left' },
+                    { value: 'center', name: 'Center' },
+                    { value: 'right', name: 'Right' },
+                    { value: 'justify', name: 'Justify' },
+                ],
+            },
+            {
+                    name: 'Letter Spacing',
+                    property: 'letter-spacing',
+                    type: 'integer',
+                    units: ['px'],
+                    defaults: 0,
+                    min: -5,
+            },],
+    },
+    {
+            name: 'Borders',
+            open: false,
+            buildProps: ['border-width', 'border-style', 'border-color', 'border-radius'],
+            properties: [
+            {
+                    name: 'Border Width',
+                    property: 'border-width',
+                    type: 'integer',
+                    units: ['px'],
+                    defaults: 1,
+                    min: 0,
+            },
+            {
+                    name: 'Border Style',
+                    property: 'border-style',
+                    type: 'select',
+                    defaults: 'solid',
+                    options: [
+                        { value: 'none', name: 'None' },
+                        { value: 'solid', name: 'Solid' },
+                        { value: 'dashed', name: 'Dashed' },
+                        { value: 'dotted', name: 'Dotted' },
+                    { value: 'double', name: 'Double' },
+                    ],
+            },
+            {
+                    name: 'Border Color',
+                    property: 'border-color',
+                    type: 'color',
+                    defaults: 'black',
+            },
+            {
+                    name: 'Border Radius',
+                    property: 'border-radius',
+                    type: 'integer',
+                    units: ['px', '%'],
+                    defaults: 0,
+            },
+        ],
+    },
+    {
+            name: 'Flexbox',
+            open: false,
+            buildProps: ['display', 'flex-direction', 'justify-content', 'align-items', 'gap'],
+            properties: [
+            {
+                    name: 'Display',
+                    property: 'display',
+                    type: 'select',
+                    defaults: 'block',
+                    options: [
+                        { value: 'block', name: 'Block' },
+                        { value: 'flex', name: 'Flex' },
+                        { value: 'grid', name: 'Grid' },
+                    ],
+            },
+            {
+                    name: 'Flex Direction',
+                    property: 'flex-direction',
+                    type: 'radio',
+                    defaults: 'row',
+                    options: [
+                        { value: 'row', name: 'Row' },
+                        { value: 'column', name: 'Column' },
+                        { value: 'row-reverse', name: 'Row Reverse' },
+                        { value: 'column-reverse', name: 'Column Reverse' },
+                    ],
+            },
+            {
+                    name: 'Justify Content',
+                    property: 'justify-content',
+                    type: 'select',
+                    defaults: 'flex-start',
+                    options: [
+                        { value: 'flex-start', name: 'Start' },
+                        { value: 'center', name: 'Center' },
+                        { value: 'flex-end', name: 'End' },
+                        { value: 'space-between', name: 'Space Between' },
+                        { value: 'space-around', name: 'Space Around' },
+                    ],
+            },
+            {
+                    name: 'Align Items',
+                    property: 'align-items',
+                    type: 'select',
+                    defaults: 'stretch',
+                    options: [
+                        { value: 'stretch', name: 'Stretch' },
+                        { value: 'center', name: 'Center' },
+                        { value: 'flex-start', name: 'Start' },
+                        { value: 'flex-end', name: 'End' },
+                    ],
+            },
+            {
+                    name: 'Gap',
+                    property: 'gap',
+                    type: 'integer',
+                    units: ['px'],
+                    defaults: 0,
+            },
+        ],
+    },
+    {
+            name: 'Background',
+            open: false,
+            buildProps: ['background-image', 'background-size', 'background-repeat', 'opacity'],
+            properties: [
+            {
+                    name: 'Background Image',
+                    property: 'background-image',
+                    type: 'file',
+            },
+            {
+                    name: 'Background Size',
+                    property: 'background-size',
+                    type: 'select',
+                    defaults: 'cover',
+                    options: [
+                        { value: 'auto', name: 'Auto' },
+                        { value: 'cover', name: 'Cover' },
+                        { value: 'contain', name: 'Contain' },
+                    ],
+            },
+            {
+                    name: 'Background Repeat',
+                    property: 'background-repeat',
+                    type: 'select',
+                    defaults: 'no-repeat',
+                    options: [
+                        { value: 'no-repeat', name: 'No Repeat' },
+                        { value: 'repeat', name: 'Repeat' },
+                        { value: 'repeat-x', name: 'Repeat X' },
+                        { value: 'repeat-y', name: 'Repeat Y' },
+                    ],
+            },
+            {
+                    name: 'Opacity',
+                    property: 'opacity',
+                    type: 'slider',
+                    defaults: 1,
+                    step: 0.1,
+                    min: 0,
+                    max: 1,
+            },
+        ],
+    }]}});
 
     editor.Commands.add('show-layers', {
         getRowEl(editor) {
