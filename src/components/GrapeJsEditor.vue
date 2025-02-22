@@ -1,26 +1,16 @@
 <template>
-    <div class="panel__top">
-      <div class="panel__basic-actions"></div>
-      <div class="panel__devices"></div>
-      <div class="panel__switcher"></div>
-    </div>
-  
     <div class="editor-layout">
-      <div class="blocks-section">
-        <div id="blocks" class="blocks-container"></div>
-      </div>
-  
-      <div id="gjs" class="editor-container">
-        <h1 class="editor-title">My first Report!</h1>
-      </div>
+        <div id="gjs" class="editor-container">
+            <h1 class="editor-title">My first Report!</h1>
+        </div>
 
-    <div class="layers-section">
-      <div id="layers" class="layers-container"></div>
-      <div class="styles-container"></div>
-      <div class="traits-container"></div>
+        <div class="layers-section">
+            <div id="layers" class="styles-container"></div>
+            <div class="traits-container"></div>   
+            <div id="blocks" class="blocks-container"></div>         
+        </div>   
     </div>
-    </div>
-  </template>
+</template>
   <script setup>
   import { onMounted } from 'vue';
   import 'grapesjs/dist/css/grapes.min.css';
@@ -33,7 +23,6 @@
       height: '100vh',
       width: '100%',
       storageManager: false,
-      panels: { defaults: [] },
       blockManager: {
         appendTo: '#blocks',
         blocks: [
@@ -127,15 +116,15 @@
             return editor.getContainer().closest('.editor-row');
         },
         getLayersEl(row) {
-            return row.querySelector('.styles-container');
+            return row.querySelector('.layers-container');
         },
         run(editor, sender) {
             const lmEl = this.getLayersEl(this.getRowEl(editor));
-            lmEl.style.display = '';
+            lmEl.style.display = 'block';
         },
         stop(editor, sender) {
             const lmEl = this.getLayersEl(this.getRowEl(editor));
-            lmEl.style.display = 'none';
+            lmEl.style.display = 'block';
         },
     });
 
@@ -148,11 +137,11 @@
         },
         run(editor, sender) {
             const smEl = this.getStyleEl(this.getRowEl(editor));
-            smEl.style.display = '';
+            smEl.style.display = 'block';
         },
         stop(editor, sender) {
             const smEl = this.getStyleEl(this.getRowEl(editor));
-            smEl.style.display = 'none';
+            smEl.style.display = 'block';
         },
     });
 
@@ -183,8 +172,7 @@
         ],
       },
     });
-
-    
+  
     editor.BlockManager.add('button', {
         label: 'Button',
         category: 'Basic',
@@ -198,164 +186,45 @@
                     <div class="col">Column 1</div>
                     <div class="col">Column 2</div>
                 </div>`,
-    });
-
-    editor.Panels.addPanel({
-        id: 'panel-devices',
-            el: '.panel__devices',
-            buttons: [
-            {
-                id: 'device-desktop',
-                label: '<i class="fas fa-desktop"></i>', 
-                command: 'set-device-desktop',
-                active: true,
-                togglable: false,
-            },
-            {
-                id: 'device-mobile',
-                label: '<i class="fas fa-mobile-alt"></i>', 
-                command: 'set-device-mobile',
-                togglable: false,
-            },
-        ],
-    });
-
-    editor.Panels.addPanel({
-        id: 'panel-switcher',
-            el: '.panel__switcher',
-            buttons: [
-            {
-                id: 'show-layers',
-                active: true,
-                label: 'Layers',
-                command: 'show-layers',
-                togglable: false,
-            },
-            {
-                id: 'show-style',
-                active: true,
-                label: 'Styles',
-                command: 'show-styles',
-                togglable: false,
-            },
-            ],
-     });
-
-  
-    editor.Panels.addPanel({
-      id: 'panel-top',
-      el: '.panel__top',
-    });
-    editor.Panels.addPanel({
-      id: 'basic-actions',
-      el: '.panel__basic-actions',
-      buttons: [
-        {
-          id: 'visibility',
-          active: true,
-          className: 'btn-toggle-borders',
-          label: '<u>B</u>',
-          command: 'sw-visibility',
-        },
-        {
-          id: 'export',
-          className: 'btn-open-export',
-          label: 'Exp',
-          command: 'export-template',
-          context: 'export-template',
-        },
-        {
-          id: 'show-json',
-          className: 'btn-show-json',
-          label: 'JSON',
-          context: 'show-json',
-          command(editor) {
-            editor.Modal.setTitle('Components JSON')
-              .setContent(
-                `<textarea style="width:100%; height: 250px;">
-                ${JSON.stringify(editor.getComponents())}
-              </textarea>`
-              )
-              .open();
-          },
-        },
-      ],
-    });
+    }); 
   });
   </script>
   
-  
   <style scoped>
-
-.panel__switcher {
-  position: initial;
-}
-
-.layers-section{
-    background: #473869;
-}
-
-.gjs-cv-canvas{
-    width: 100% !important;
-    height: 100% !important;
-}
-
-  #layers {
-  width: 300px; 
-  background-color: #2c2c2c;
-  padding: 15px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  color: white;
-  margin-top:8%;
-}
-
-  .editor-container {
-    padding: 20px;
-    background: #473869;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .editor-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 16px;
-  }
-  
-  .blocks-section {
-    width: 100%;
-  }
-  
-  .blocks-heading {
-    font-size: 20px;
-    font-weight: bold;
-    color: #4a047e;
-    margin-bottom: 10px;
-    text-align: left;
-    padding-left: 20px;
-  }
-  
 .editor-layout {
   display: flex;
   width: 100%;
   height: 100vh;
+  background: #2c2c2c;
 }
 
-.blocks-section {
-  width: 300px; 
-  background-color: #473869;
-  padding: 20px;
+.blocks-section, .layers-section {
+  width: 300px;
+  background: #3b2d56;
   overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.editor-container {
+  flex: 1;
+  background: #473869;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.editor-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .blocks-heading {
   font-size: 20px;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -364,72 +233,84 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #473869;
+  background: #3b2d56;
 }
 
-  .gjs-block {
-    width: 150px;
-    height: auto;
-    min-height: 100px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-  }
-  
-  .gjs-block:hover {
-    background-color: #f3f3f3;
-  }
-  
-  .gjs-block-section {
-    background-color: #f0f5ff;
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
-  .panel__top {
-  padding: 0;
+.gjs-block {
   width: 100%;
-  display: flex;
-  position: initial;
-  justify-content: center;
-  justify-content: space-between;
+  min-height: 100px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.panel__basic-actions {
-  position: initial;
-}
-  
-  .btn-toggle-borders,
-  .btn-open-export,
-  .btn-show-json {
-    background-color: #4a047e;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-toggle-borders:hover,
-  .btn-open-export:hover,
-  .btn-show-json:hover {
-    background-color: #6a1b9a;
-  }
-  
-  textarea {
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: #f9f9f9;
-  }
 
-  .panel__devices {
-  position: initial;
+.gjs-block:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
 }
-  </style>
+
+.styles-container {
+  display: block;
+  width: 300px;
+  height: 90%;
+  background: #3b2d56;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.btn-toggle-borders,
+.btn-open-export,
+.btn-show-json {
+  background-color: #4a047e;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-toggle-borders:hover,
+.btn-open-export:hover,
+.btn-show-json:hover {
+  background-color: #6a1b9a;
+  transform: scale(1.05);
+}
+
+textarea {
+  width: 100%;
+  height: 250px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  resize: none;
+}
+
+#layers {
+  width: 100%;
+  background-color: #3b2d56;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 0px;
+}
+
+.layers-section {
+    width: 300px;
+    display: inline-table;
+    flex-direction: column;
+    background: #3b2d56;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+</style>
   

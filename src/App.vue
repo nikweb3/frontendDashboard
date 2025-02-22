@@ -6,7 +6,12 @@ import Sidebar from './components/Sidebar.vue'
 <template>
   <div class="flex h-screen bg-black">
     <Sidebar />
-    <main class="flex-1 p-6 overflow-auto flex justify-center">
+    <!-- <main class="flex-1 p-6 overflow-auto flex justify-center">
+      <div class="bg-white rounded-lg shadow-lg w-full ">
+        <RouterView />
+      </div>
+    </main> -->
+    <main class="flex-1 overflow-auto flex justify-center">
       <div class="bg-white rounded-lg shadow-lg w-full ">
         <RouterView />
       </div>
