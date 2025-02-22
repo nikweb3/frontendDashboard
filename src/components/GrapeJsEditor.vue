@@ -5,10 +5,13 @@
         </div>
 
         <div class="layers-section">
-            <div id="layers" class="styles-container"></div>
-            <div class="traits-container"></div>   
-            <div id="blocks" class="blocks-container"></div>         
-        </div>   
+    <div class="layers-content">
+        <div id="layers" class="styles-container"></div>
+        <div class="traits-container"></div>   
+        <div id="blocks" class="blocks-container"></div> 
+    </div>
+</div>
+ 
     </div>
 </template>
   <script setup>
@@ -256,7 +259,6 @@
 .styles-container {
   display: block;
   width: 300px;
-  height: 90%;
   background: #3b2d56;
   padding: 15px;
   border-radius: 8px;
@@ -305,12 +307,33 @@ textarea {
 
 .layers-section {
     width: 300px;
-    display: inline-table;
+    display: flex;
     flex-direction: column;
     background: #3b2d56;
-    overflow-y: auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    height: 100vh; 
+    overflow: hidden; 
 }
+
+.layers-content {
+    flex: 1;
+    overflow-y: auto; 
+    scrollbar-gutter: stable;
+}
+
+.layers-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.layers-content::-webkit-scrollbar-thumb {
+    background: #6a1b9a;
+    border-radius: 4px;
+}
+
+.layers-content::-webkit-scrollbar-track {
+    background: #3b2d56;
+}
+
 </style>
   
